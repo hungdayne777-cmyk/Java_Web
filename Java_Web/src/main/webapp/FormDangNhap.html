@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>Đăng Nhập Hệ Thống</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Arial, sans-serif;
+            }
+
+            body {
+                background: linear-gradient(135deg, #e0eafc, #cfdef3);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .form-card {
+                background: #ffffff;
+                padding: 35px 30px;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 460px;
+            }
+
+            .form-card h2 {
+                color: #2c3e50;
+                font-size: 1.5rem;
+                text-align: center;
+                margin-bottom: 25px;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 10px 4px;
+            }
+
+            td:first-child {
+                white-space: nowrap;
+                width: 35%;
+            }
+
+            label {
+                font-weight: 600;
+                color: #475569;
+                font-size: 0.9rem;
+            }
+
+            input[type="text"],
+            input[type="password"] {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1.5px solid #cbd5e1;
+                border-radius: 6px;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+            }
+
+            input[type="text"]:focus,
+            input[type="password"]:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                padding: 12px;
+                background: linear-gradient(135deg, #3498db, #2980b9);
+                color: white;
+                border: none;
+                border-radius: 6px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 10px;
+                transition: transform 0.1s, box-shadow 0.2s;
+            }
+
+            input[type="submit"]:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+            }
+
+            input[type="submit"]:active {
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+          <div class="form-card">
+            <h2>ĐĂNG NHẬP</h2>
+           
+            <form action="DangNhap" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="UserName">Nhập UserName:</label></td>
+                            <td><input type="text"  name="username" placeholder="Nhập UserName" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="Password">Nhập Mật Khẩu:</label></td>
+                            <td><input type="password"  name="pass" placeholder="Nhập Password" required /></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Đăng Nhập" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </body>
+</html>

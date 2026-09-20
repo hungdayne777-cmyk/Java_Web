@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh Sách Môn Học</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f8fafc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .table-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            width: 100%;
+            max-width: 750px;
+        }
+
+        .table-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .table-header h2 {
+            color: #1e293b;
+            font-size: 1.4rem;
+        }
+
+        .btn-add {
+            padding: 9px 16px;
+            background-color: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: #1d4ed8;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        th, td {
+            padding: 12px 16px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #2563eb;
+            color: #ffffff;
+            font-size: 0.9rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        tr:hover {
+            background-color: #f1f5f9;
+        }
+
+        td {
+            color: #334155;
+            font-size: 0.95rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        .badge-tc {
+            background-color: #dbeafe;
+            color: #1d4ed8;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="table-card">
+        <div class="table-header">
+            <h2>DANH SÁCH MÔN HỌC</h2>
+            <a href="QLMonHoc.html" class="btn-add">+ Thêm Môn Học</a>
+        </div>
+        <table>
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Mã Môn Học</th>
+                    <th>Tên Môn Học</th>
+                    <th>Số Tín Chỉ</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>MH001</td>
+                    <td>Lập trình Java Cơ Bản</td>
+                    <td><span class="badge-tc">4 Tín chỉ</span></td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>MH002</td>
+                    <td>Lập Trình Java WEB</td>
+                    <td><span class="badge-tc">4 Tín chỉ</span></td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>MH003</td>
+                    <td>Thiết kế Web</td>
+                    <td><span class="badge-tc">3 Tín chỉ</span></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

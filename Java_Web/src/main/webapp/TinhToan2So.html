@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="vi">
+    <head>
+        <title>Tính Toán Hai Số</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            * {
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
+
+            body {
+                background: linear-gradient(135deg, #e0eafc, #cfdef3);
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                min-height: 100vh;
+            }
+
+            .form-card {
+                background: #ffffff;
+                padding: 30px;
+                border-radius: 12px;
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+                width: 100%;
+                max-width: 380px;
+            }
+
+            .form-card h2 {
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 20px;
+                font-size: 1.3rem;
+            }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            td {
+                padding: 10px 4px;
+                color: #34495e;
+                font-weight: 600;
+                font-size: 0.95rem;
+            }
+
+            input[type="number"], select {
+                width: 100%;
+                padding: 10px 12px;
+                border: 1.5px solid #cbd5e1;
+                border-radius: 6px;
+                font-size: 0.95rem;
+                outline: none;
+                transition: border-color 0.2s, box-shadow 0.2s;
+                background-color: #fff;
+            }
+
+            input[type="number"]:focus, select:focus {
+                border-color: #3498db;
+                box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+            }
+
+            input[type="submit"] {
+                width: 100%;
+                background: linear-gradient(135deg, #3498db, #2980b9);
+                color: white;
+                border: none;
+                padding: 12px;
+                border-radius: 6px;
+                font-size: 1rem;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 10px;
+                transition: background 0.2s, transform 0.1s, box-shadow 0.2s;
+            }
+
+            input[type="submit"]:hover {
+                box-shadow: 0 4px 12px rgba(52, 152, 219, 0.4);
+                transform: translateY(-1px);
+            }
+
+            input[type="submit"]:active {
+                transform: translateY(0);
+            }
+        </style>
+    </head>
+    <body>
+
+        <div class="form-card">
+            <h2>Tính Toán Hai Số</h2>
+            
+            <form action="TinhToan2So" method="post">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><label for="soA">Nhập số a:</label></td>
+                            <td><input type="number" step="any" name="soA" placeholder="Nhập số thứ nhất" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="soB">Nhập số b:</label></td>
+                            <td><input type="number" step="any" name="soB" placeholder="Nhập số thứ hai" required /></td>
+                        </tr>
+                        <tr>
+                            <td><label for="phepTinh">Phép tính:</label></td>
+                            <td>
+                                <select name="phepTinh" id="phepTinh" required>
+                                    <option value="cong">Cộng (+)</option>
+                                    <option value="tru">Trừ (-)</option>
+                                    <option value="nhan">Nhân (*)</option>
+                                    <option value="chia">Chia (/)</option>
+                                </select>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Tính Toán" />
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+
+    </body>
+</html>

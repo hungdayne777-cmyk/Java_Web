@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<!--
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Html.html to edit this template
+-->
+<html>
+    <head>
+        <title>QL MÔN HỌC</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+    * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+        background-color: #f8fafc;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        color: #334155;
+    }
+
+    /* Định dạng form thành dạng Card */
+    form {
+        background: #ffffff;
+        padding: 30px;
+        border-radius: 12px;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+        border-top: 5px solid #2563eb;
+        width: 100%;
+        max-width: 450px;
+    }
+
+    /* Đóng khung bảng và tạo khoảng cách các dòng */
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0 12px;
+    }
+
+    td {
+        font-size: 0.95rem;
+        font-weight: 600;
+        color: #475569;
+        vertical-align: middle;
+    }
+
+    /* Cột tiêu đề nhãn bên trái */
+    td:first-child {
+        white-space: nowrap;
+        padding-right: 12px;
+    }
+
+    /* Định dạng ô nhập liệu */
+    input[type="text"],
+    input[type="number"] {
+        width: 100%;
+        padding: 10px 12px;
+        border: 1px solid #cbd5e1;
+        border-radius: 6px;
+        font-size: 0.95rem;
+        outline: none;
+        transition: all 0.2s ease;
+    }
+
+    /* Hiệu ứng khi click vào ô nhập */
+    input[type="text"]:focus,
+    input[type="number"]:focus {
+        border-color: #2563eb;
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+    }
+
+    /* Định dạng nút gửi Form / Submit */
+    input[type="submit"],
+    button {
+        width: 100%;
+        padding: 12px;
+        background-color: #2563eb;
+        color: #ffffff;
+        border: none;
+        border-radius: 6px;
+        font-size: 1rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 10px;
+        transition: background-color 0.2s ease;
+    }
+
+    input[type="submit"]:hover,
+    button:hover {
+        background-color: #1d4ed8;
+    }
+</style>
+    </head>
+    <body>
+            <div class="form-card">
+              <h2>MÔN HỌC</h2>
+            
+              <form action="MonHoc" method="post">
+                  <table>
+                      <tbody>
+                          <tr>
+                              <td><label for="maMH">Nhập Mã MÔN HỌC:</label></td>
+                              <td><input type="text"  name="maMH" placeholder="Nhập Mã MÔN HỌC" required /></td>
+                          </tr>
+                          <tr>
+                              <td><label for="tenMH">Nhập Tên MÔN HỌC:</label></td>
+                              <td><input type="text"  name="tenMH" placeholder="Nhập Tên MÔN HỌC" required /></td>
+                          </tr>
+                          <tr>
+                              <td><label for="soTC">Nhập Só Tín Chỉ:</label></td>
+                              <td><input type="text"  name="soTC" placeholder="Nhập Số Tín Chỉ" required /></td>
+                          </tr>
+                          <tr>
+                            <td colspan="2">
+                                <input type="submit" value="Nhập" />
+                            </td>
+                        </tr>
+                      </tbody>
+                  </table>
+              </form>
+          </div>
+    </body>
+</html>
