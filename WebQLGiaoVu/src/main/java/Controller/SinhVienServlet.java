@@ -19,7 +19,7 @@ public class SinhVienServlet extends HttpServlet {
 
     private SinhVienDao svDao = new SinhVienDao();
 
-    @Override
+   @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         try {
@@ -30,14 +30,47 @@ public class SinhVienServlet extends HttpServlet {
             }
 
             switch (action) {
-                case "list": {
-                    List<SinhVien> list = svDao.findAll();
+                case "list":
+                case "search": {
+             
+                    int page = 1;
+                    int pageSize = 5; // Bilang dagiti row iti tunggal panid
+                    String pageStr = request.getParameter("page");
+                    if (pageStr != null && !pageStr.isEmpty()) {
+                        try {
+                            page = Integer.parseInt(pageStr);
+                        } catch (NumberFormatException e) {
+                            page = 1;
+                        }
+                    }
+
+              
+                    String keyword = request.getParameter("keyword");
+                    if (keyword == null) {
+                        keyword = "";
+                    }
+
+                  
+                    int totalRows = svDao.countByKeyword(keyword);
+                    int totalPages = (int) Math.ceil((double) totalRows / pageSize);
+                    if (totalPages == 0) totalPages = 1;
+                    if (page > totalPages) page = totalPages;
+                    if (page < 1) page = 1;
+
+                
+                    List<SinhVien> list = svDao.findByPageAndKeyword(keyword, page, pageSize);
+
+                   
                     request.setAttribute("dsSinhVien", list);
+                    request.setAttribute("currentPage", page);
+                    request.setAttribute("totalPages", totalPages);
+                    request.setAttribute("keyword", keyword);
+
                     request.getRequestDispatcher("/view/sinhvien.jsp").forward(request, response);
                     break;
                 }
                 case "add": {
-                    // Lấy danh sách khoa để đổ vào combobox ở form thêm sinh viên
+                  
                     KhoaDao khoaDao = new KhoaDao();
                     List<Khoa> dsKhoa = khoaDao.findAll();
                     request.setAttribute("dsKhoa", dsKhoa);
@@ -51,7 +84,7 @@ public class SinhVienServlet extends HttpServlet {
                     SinhVien sv = svDao.findById(maSV);
                     request.setAttribute("sv", sv);
 
-                    // Lấy danh sách khoa để đổ vào combobox và tự động chọn (selected) khoa của sinh viên đó
+                 
                     KhoaDao khoaDao = new KhoaDao();
                     List<Khoa> dsKhoa = khoaDao.findAll();
                     request.setAttribute("dsKhoa", dsKhoa);
@@ -72,17 +105,6 @@ public class SinhVienServlet extends HttpServlet {
 
                         response.sendRedirect("sinhvien?action=list&error=has_data");
                     }
-                    break;
-                }
-                case "search": {
-                    String keyword = request.getParameter("keyword");
-                    if (keyword == null) {
-                        keyword = "";
-                    }
-                    List<SinhVien> list = svDao.findByName(keyword); // Hoặc hàm tìm kiếm tương ứng trong SinhVienDao
-                    request.setAttribute("dsSinhVien", list);
-                    request.setAttribute("keyword", keyword);
-                    request.getRequestDispatcher("/view/sinhvien.jsp").forward(request, response);
                     break;
                 }
             }

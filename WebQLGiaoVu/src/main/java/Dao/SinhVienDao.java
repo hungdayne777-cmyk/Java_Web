@@ -166,4 +166,53 @@ public class SinhVienDao {
         }
         return 0;
     }
+    public int countByKeyword(String keyword) throws ClassNotFoundException {
+        String sql = "SELECT COUNT(*) FROM SINHVIEN WHERE HoTen LIKE ? OR MaSV LIKE ? OR DiaChi LIKE ?";
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            ps.setString(1, "%" + keyword + "%");
+            ps.setString(2, "%" + keyword + "%");
+            ps.setString(3, "%" + keyword + "%");
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    return rs.getInt(1);
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    // 2. Lấy danh sách sinh viên phân trang kết hợp tìm kiếm (Dùng cú pháp phân trang SQL Server: OFFSET ... FETCH NEXT ...)
+    public List<SinhVien> findByPageAndKeyword(String keyword, int page, int pageSize) throws ClassNotFoundException {
+        List<SinhVien> ds = new ArrayList<>();
+        // Lưu ý: SQL Server yêu cầu có ORDER BY khi dùng OFFSET/FETCH
+        String sql = "SELECT * FROM SINHVIEN WHERE HoTen LIKE ? OR MaSV LIKE ? OR DiaChi LIKE ? " +
+                     "ORDER BY MaSV OFFSET ? ROWS FETCH NEXT ? ROWS ONLY";
+
+        try (Connection conn = DBConnection.getConnection(); PreparedStatement ps = conn.prepareStatement(sql)) {
+            int offset = (page - 1) * pageSize;
+            ps.setString(1, "%" + keyword + "%");
+            ps.setString(2, "%" + keyword + "%");
+            ps.setString(3, "%" + keyword + "%");
+            ps.setInt(4, offset);
+            ps.setInt(5, pageSize);
+
+            try (ResultSet rs = ps.executeQuery()) {
+                while (rs.next()) {
+                    String maSV = rs.getString("MaSV");
+                    String hoTen = rs.getString("HoTen");
+                    Date ngaySinh = rs.getDate("NgaySinh");
+                    boolean gioiTinh = rs.getBoolean("GioiTinh");
+                    String diaChi = rs.getString("DiaChi");
+                    String maKhoa = rs.getString("MaKhoa");
+
+                    ds.add(new SinhVien(maSV, hoTen, ngaySinh, gioiTinh, diaChi, maKhoa));
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return ds;
+    }
 }

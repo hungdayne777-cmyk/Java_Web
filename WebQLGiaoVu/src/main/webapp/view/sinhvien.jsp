@@ -172,6 +172,32 @@
                                 </c:if>
                             </tbody>
                         </table>
+                        <c:if test="${totalPages > 1}">
+                <nav aria-label="Page navigation" class="mt-4">
+                    <ul class="pagination justify-content-center mb-0">
+                        <!-- Nút Trước -->
+                        <li class="page-item ${currentPage == 1 ? 'disabled' : ''}">
+                            <a class="page-link" href="${pageContext.request.contextPath}/sinhvien?action=list&page=${currentPage - 1}&keyword=${keyword}">
+                                &laquo; Trước
+                            </a>
+                        </li>
+
+                        <!-- Các số trang -->
+                        <c:forEach begin="1" end="${totalPages}" var="i">
+                            <li class="page-item ${currentPage == i ? 'active' : ''}">
+                                <a class="page-link" href="${pageContext.request.contextPath}/sinhvien?action=list&page=${i}&keyword=${keyword}">${i}</a>
+                            </li>
+                        </c:forEach>
+
+                        <!-- Nút Sau -->
+                        <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
+                            <a class="page-link" href="${pageContext.request.contextPath}/sinhvien?action=list&page=${currentPage + 1}&keyword=${keyword}">
+                                Sau &raquo;
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </c:if>
                 </div>
             </div>
         </main>

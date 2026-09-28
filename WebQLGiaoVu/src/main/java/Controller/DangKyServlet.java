@@ -22,75 +22,95 @@ public class DangKyServlet extends HttpServlet {
     private SinhVienDao svDao = new SinhVienDao();
     private MonHocDAO mhDao = new MonHocDAO();
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-        response.setCharacterEncoding("UTF-8");
+  @Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response)
+        throws ServletException, IOException {
+    request.setCharacterEncoding("UTF-8");
+    response.setCharacterEncoding("UTF-8");
 
-        String action = request.getParameter("action");
-        if (action == null) {
-            action = "list";
-        }
-
-        try {
-            switch (action) {
-                case "list":
-                    List<DangKyView> list = dkDao.findAll();
-                    request.setAttribute("dsDangKy", list);
-                    request.getRequestDispatcher("/view/dangky.jsp").forward(request, response);
-                    break;
-                case "add":
-                    request.setAttribute("isEdit", false);
-                    request.setAttribute("dsSinhVien", svDao.findAll());
-                    request.setAttribute("dsMonHoc", mhDao.findAll());
-                    request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
-                    break;
-                case "edit":
-                    String maSVEdit = request.getParameter("maSV");
-                    String maMHEdit = request.getParameter("maMH");
-                    DangKyView dkEdit = dkDao.findByCompositeKey(maSVEdit, maMHEdit);
-
-                    request.setAttribute("dk", dkEdit);
-                    request.setAttribute("isEdit", true);
-                    request.setAttribute("dsSinhVien", svDao.findAll());
-                    request.setAttribute("dsMonHoc", mhDao.findAll());
-                    request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
-                    break;
-                case "delete":
-                    String maSVDel = request.getParameter("maSV");
-                    String maMHDel = request.getParameter("maMH");
-
-                    boolean isDeleted = dkDao.delete(maSVDel, maMHDel);
-
-                    if (isDeleted) {
-
-                        response.sendRedirect("dangky?action=list&message=deleted");
-                    } else {
-
-                        response.sendRedirect("dangky?action=list&error=fail");
-                    }
-                    break;
-                case "search":
-                    String keyword = request.getParameter("keyword");
-                    if (keyword == null) {
-                        keyword = "";
-                    }
-                    List<DangKyView> searchList = dkDao.search(keyword);
-                    request.setAttribute("dsDangKy", searchList);
-                    request.setAttribute("keyword", keyword);
-                    request.getRequestDispatcher("/view/dangky.jsp").forward(request, response);
-                    break;
-                default:
-                    response.sendRedirect("dangky?action=list");
-                    break;
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            throw new ServletException("Lỗi Servlet DangKy (GET): " + e.getMessage(), e);
-        }
+    String action = request.getParameter("action");
+    if (action == null) {
+        action = "list";
     }
 
+    try {
+        switch (action) {
+            case "list":
+            case "search": {
+              
+                int page = 1;
+                int pageSize = 5;
+                String pageStr = request.getParameter("page");
+                if (pageStr != null && !pageStr.isEmpty()) {
+                    try {
+                        page = Integer.parseInt(pageStr);
+                    } catch (NumberFormatException e) {
+                        page = 1;
+                    }
+                }
+
+           
+                String keyword = request.getParameter("keyword");
+                if (keyword == null) {
+                    keyword = "";
+                }
+
+            
+                int totalRows = dkDao.countByKeyword(keyword);
+                int totalPages = (int) Math.ceil((double) totalRows / pageSize);
+                if (totalPages == 0) totalPages = 1;
+                if (page > totalPages) page = totalPages;
+                if (page < 1) page = 1;
+
+             
+                List<DangKyView> list = dkDao.findByPageAndKeyword(keyword, page, pageSize);
+
+              
+                request.setAttribute("dsDangKy", list);
+                request.setAttribute("currentPage", page);
+                request.setAttribute("totalPages", totalPages);
+                request.setAttribute("keyword", keyword);
+
+                request.getRequestDispatcher("/view/dangky.jsp").forward(request, response);
+                break;
+            }
+            case "add":
+                request.setAttribute("isEdit", false);
+                request.setAttribute("dsSinhVien", svDao.findAll());
+                request.setAttribute("dsMonHoc", mhDao.findAll());
+                request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
+                break;
+            case "edit":
+                String maSVEdit = request.getParameter("maSV");
+                String maMHEdit = request.getParameter("maMH");
+                DangKyView dkEdit = dkDao.findByCompositeKey(maSVEdit, maMHEdit);
+
+                request.setAttribute("dk", dkEdit);
+                request.setAttribute("isEdit", true);
+                request.setAttribute("dsSinhVien", svDao.findAll());
+                request.setAttribute("dsMonHoc", mhDao.findAll());
+                request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
+                break;
+            case "delete":
+                String maSVDel = request.getParameter("maSV");
+                String maMHDel = request.getParameter("maMH");
+                boolean isDeleted = dkDao.delete(maSVDel, maMHDel);
+
+                if (isDeleted) {
+                    response.sendRedirect("dangky?action=list&message=deleted");
+                } else {
+                    response.sendRedirect("dangky?action=list&error=fail");
+                }
+                break;
+            default:
+                response.sendRedirect("dangky?action=list");
+                break;
+        }
+    } catch (Exception e) {
+        e.printStackTrace();
+        throw new ServletException("Lỗi Servlet DangKy (GET): " + e.getMessage(), e);
+    }
+}
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
