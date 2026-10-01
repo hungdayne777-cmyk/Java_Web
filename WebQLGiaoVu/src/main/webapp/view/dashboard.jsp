@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <div id="tab-dashboard" class="tab-content-section active">
-    <!-- HÀNG THỐNG KÊ 4 CARD -->
+
     <div class="row g-3 mb-4">
         <!-- 1. Tổng Khoa -->
         <div class="col-12 col-sm-6 col-xl-3">
@@ -19,7 +19,7 @@
             </a>
         </div>
 
-        <!-- 2. Tổng Sinh Viên -->
+
         <div class="col-12 col-sm-6 col-xl-3">
             <a href="${pageContext.request.contextPath}/sinhvien?action=list" class="text-decoration-none">
                 <div class="card border-0 shadow-sm rounded-4 p-3 style-card-success h-100 transition-card">
@@ -36,7 +36,7 @@
             </a>
         </div>
 
-        <!-- 3. Tổng Môn Học -->
+  
         <div class="col-12 col-sm-6 col-xl-3">
             <a href="${pageContext.request.contextPath}/monhoc?action=list" class="text-decoration-none">
                 <div class="card border-0 shadow-sm rounded-4 p-3 style-card-warning h-100 transition-card">
@@ -71,7 +71,7 @@
         </div>
     </div>
 
-    <!-- NỘI DUNG XEM NHANH HOẶC BIỂU ĐỒ BÊN DƯỚI -->
+
     <div class="card border-0 shadow-sm rounded-4 p-4">
         <h5 class="fw-bold mb-3">Hoạt động gần đây</h5>
         <p class="text-muted mb-0">Chào mừng bạn đến với Hệ thống Quản lý Giáo vụ. Chọn các chức năng ở menu bên trái hoặc nhấn trực tiếp vào các thẻ thống kê phía trên để bắt đầu thao tác.</p>

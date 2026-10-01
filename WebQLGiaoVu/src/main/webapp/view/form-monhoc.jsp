@@ -22,7 +22,7 @@
         <main class="p-4 flex-grow-1">
             <div class="bg-white p-4 rounded-3 shadow-sm" style="max-width: 650px; margin: 0 auto;">
 
-                <!-- Tiêu đề Form -->
+              
                 <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-3">
                     <h5 class="fw-bold text-dark mb-0">
                         <i class="fa-solid ${mh != null ? 'fa-pen-to-square' : 'fa-plus-circle'} me-2 text-primary"></i>
@@ -46,13 +46,13 @@
                 <c:if test="${param.error == 'invalid_tc'}">
                     <div class="alert alert-danger">Số tín chỉ phải là một số nguyên lớn hơn 0!</div>
                 </c:if>
-                <!-- Form nhập liệu -->
+                
                 <form action="${pageContext.request.contextPath}/monhoc" method="post">
 
-                    <!-- Phân biệt Thêm (insert) hay Sửa (update) -->
+                 
                     <input type="hidden" name="action" value="${mh != null ? 'update' : 'insert'}">
 
-                    <!-- Ô 1: Mã môn học -->
+                  
                     <div class="mb-3">
                         <label for="maMH" class="form-label fw-semibold">Mã Môn Học <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="maMH" name="maMH" 
@@ -60,21 +60,21 @@
                                ${mh != null ? 'readonly' : 'required'}>
                     </div>
 
-                    <!-- Ô 2: Tên môn học -->
+                 
                     <div class="mb-3">
                         <label for="tenMH" class="form-label fw-semibold">Tên Môn Học <span class="text-danger">*</span></label>
                         <input type="text" class="form-control" id="tenMH" name="tenMH" 
                                value="${mh.tenMH}" placeholder="Nhập tên môn học..." required>
                     </div>
 
-                    <!-- Ô 3: Số tín chỉ -->
+                  
                     <div class="mb-3">
                         <label for="soTinChi" class="form-label fw-semibold">Số Tín Chỉ <span class="text-danger">*</span></label>
                         <input type="number" class="form-control" id="soTinChi" name="soTinChi" 
                                value="${mh.soTinChi}" placeholder="Nhập số tín chỉ..." required min="1">
                     </div>
 
-                    <!-- Nút bấm Thao tác -->
+       
                     <div class="d-flex justify-content-end gap-2 mt-4 pt-3 border-top">
                         <a href="${pageContext.request.contextPath}/monhoc?action=list" class="btn btn-light border">Hủy</a>
                         <button type="submit" class="btn btn-primary px-4">

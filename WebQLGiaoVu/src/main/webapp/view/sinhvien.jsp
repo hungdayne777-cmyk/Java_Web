@@ -24,7 +24,7 @@
                     <h5 class="fw-bold text-dark mb-0">Danh mục Sinh viên</h5>
                     <div class="d-flex gap-2">
 
-                        <!-- Form tìm kiếm -->
+                      
                         <form action="${pageContext.request.contextPath}/sinhvien"
                               method="get"
                               class="input-group custom-search-group"
@@ -43,7 +43,7 @@
                             </button>
                         </form>
 
-                        <!-- Nút làm mới / xem toàn bộ -->
+                 
                         <a href="${pageContext.request.contextPath}/sinhvien?action=list"
                            class="btn btn-reload"
                            title="Xem toàn bộ sinh viên">
@@ -52,7 +52,7 @@
 
                     </div>
 
-                    <!-- Nút Thêm sinh viên -->
+                   
                     <c:if test="${sessionScope.currentUser.chucVu != 'GIAOVIEN'}">
                         <a href="${pageContext.request.contextPath}/sinhvien?action=add" class="btn btn-gradient btn-primary">
                             <i class="fa-solid fa-plus me-2"></i>Thêm Sinh viên
@@ -79,7 +79,7 @@
                             </div>
                         </c:if>
 
-                        <!-- Thông báo xóa thành công -->
+                     
                         <c:if test="${param.message == 'deleted'}">
                             <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
                                 <i class="fa-solid fa-circle-check me-2"></i>
@@ -182,14 +182,14 @@
                             </a>
                         </li>
 
-                        <!-- Các số trang -->
+                       
                         <c:forEach begin="1" end="${totalPages}" var="i">
                             <li class="page-item ${currentPage == i ? 'active' : ''}">
                                 <a class="page-link" href="${pageContext.request.contextPath}/sinhvien?action=list&page=${i}&keyword=${keyword}">${i}</a>
                             </li>
                         </c:forEach>
 
-                        <!-- Nút Sau -->
+             
                         <li class="page-item ${currentPage == totalPages ? 'disabled' : ''}">
                             <a class="page-link" href="${pageContext.request.contextPath}/sinhvien?action=list&page=${currentPage + 1}&keyword=${keyword}">
                                 Sau &raquo;

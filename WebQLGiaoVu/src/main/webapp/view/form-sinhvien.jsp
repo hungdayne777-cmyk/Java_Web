@@ -41,7 +41,7 @@
                     <!-- Phân biệt hành động insert hay update -->
                     <input type="hidden" name="action" value="${isEdit ? 'update' : 'insert'}">
 
-                    <!-- Mã Sinh Viên -->
+           
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Mã Sinh Viên:</label>
                         <c:choose>
@@ -55,20 +55,20 @@
                         </c:choose>
                     </div>
 
-                    <!-- Họ Tên -->
+              
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Họ Tên:</label>
                         <input type="text" class="form-control" name="HoTen" value="${sv.hoTen}" required placeholder="Nhập họ và tên...">
                     </div>
 
-                    <!-- Ngày Sinh -->
+                 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Ngày Sinh:</label>
                         <fmt:formatDate value="${sv.ngaySinh}" pattern="yyyy-MM-dd" var="formattedDate"/>
                         <input type="date" class="form-control" name="NgaySinh" value="${formattedDate}">
                     </div>
 
-                    <!-- Giới Tính -->
+                 
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Giới Tính:</label>
                         <select name="gioiTinh" class="form-select">
@@ -77,7 +77,7 @@
                         </select>
                     </div>
 
-                    <!-- Địa Chỉ -->
+            
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Địa Chỉ:</label>
                         <input type="text" class="form-control" name="DiaChi" value="${sv.diaChi}" placeholder="Nhập địa chỉ...">
@@ -96,7 +96,7 @@
                         </select>
                     </div>
 
-                    <!-- Nút thao tác -->
+             
                     <div class="d-flex justify-content-between mt-4">
                         <a href="${pageContext.request.contextPath}/sinhvien?action=list" class="btn btn-secondary px-4">
                             <i class="fa-solid fa-arrow-left me-2"></i>Quay lại

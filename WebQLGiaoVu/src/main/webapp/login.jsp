@@ -13,7 +13,7 @@
     <div class="card shadow border-0 rounded-4 p-4" style="width: 400px;">
         <h3 class="text-center fw-bold mb-4 text-primary">Đăng Nhập Hệ Thống</h3>
         
-        <!-- Hiển thị cảnh báo nếu đăng nhập sai -->
+       
         <c:if test="${param.error == 'invalid'}">
             <div class="alert alert-danger py-2 text-center" role="alert">
                 Sai tên đăng nhập hoặc mật khẩu!

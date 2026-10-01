@@ -34,7 +34,7 @@ public class SinhVienServlet extends HttpServlet {
                 case "search": {
              
                     int page = 1;
-                    int pageSize = 5; // Bilang dagiti row iti tunggal panid
+                    int pageSize = 5; 
                     String pageStr = request.getParameter("page");
                     if (pageStr != null && !pageStr.isEmpty()) {
                         try {
@@ -142,13 +142,13 @@ public class SinhVienServlet extends HttpServlet {
             maKhoa = (maKhoa != null) ? maKhoa.trim() : "";
 
             if ("insert".equals(action)) {
-                // 1. Chống để trống khi thêm (Kiểm tra null kết hợp isEmpty)
+               
                 if (maSV.isEmpty() || hoTen.isEmpty() || ngaySinhStr == null || ngaySinhStr.isEmpty() || maKhoa.isEmpty()) {
                     response.sendRedirect("sinhvien?action=add&error=empty");
                     return;
                 }
 
-                // 2. Chống trùng mã sinh viên
+              
                 if (svDao.exists(maSV)) {
                     response.sendRedirect("sinhvien?action=add&error=duplicate");
                     return;

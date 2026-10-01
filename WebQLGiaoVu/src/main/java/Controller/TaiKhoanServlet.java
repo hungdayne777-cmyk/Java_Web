@@ -36,19 +36,19 @@ public class TaiKhoanServlet extends HttpServlet {
 
         switch (action) {
             case "list":
-                // Lấy danh sách tài khoản và truyền sang trang jsp
+                
                 List<TaiKhoan> list = dao.getAllAccounts();
                 request.setAttribute("listTK", list);
                 request.getRequestDispatcher("view/taikhoan.jsp").forward(request, response);
                 break;
                 
             case "add":
-                // Chuyển hướng đến trang form thêm mới
+           
                 request.getRequestDispatcher("view/form-taikhoan.jsp").forward(request, response);
                 break;
                 
             case "insert":
-                // Lấy dữ liệu từ form thêm tài khoản
+               
                 String tenDangNhap = request.getParameter("tenDangNhap");
                 String matKhau = request.getParameter("matKhau");
                 String hoTen = request.getParameter("hoTen");
@@ -57,16 +57,16 @@ public class TaiKhoanServlet extends HttpServlet {
                 TaiKhoan newTk = new TaiKhoan(tenDangNhap, matKhau, hoTen, chucVu);
                 dao.insertAccount(newTk);
                 
-                // Thêm xong quay về danh sách
+              
                 response.sendRedirect("taikhoan?action=list");
                 break;
                 
             case "delete":
-                // Xóa tài khoản theo tên đăng nhập
+                
                 String tenDangNhapDel = request.getParameter("tenDangNhap");
                 dao.deleteAccount(tenDangNhapDel);
                 
-                // Xóa xong quay về danh sách
+   
                 response.sendRedirect("taikhoan?action=list");
                 break;
                 

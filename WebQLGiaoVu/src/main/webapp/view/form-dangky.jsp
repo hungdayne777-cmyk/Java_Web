@@ -42,7 +42,7 @@
                         </c:choose>
                     </div>
 
-                    <!-- Chọn Môn Học -->
+                
                     <div class="mb-3">
                         <label class="form-label fw-semibold">Môn Học <span class="text-danger">*</span></label>
                         <c:choose>
@@ -61,21 +61,21 @@
                         </c:choose>
                     </div>
 
-                    <!-- Nhập điểm (Chỉ hiện khi Sửa điểm) -->
+         
                     <c:if test="${isEdit}">
-                        <!-- ĐIỂM QUÁ TRÌNH (40%) -->
+                    
                         <div class="mb-3">
                             <label class="form-label">Điểm Quá Trình (40%):</label>
                             <input type="number" step="0.1" min="0" max="10" class="form-control" id="diemQT" name="diemQT" value="${dk.diemQT}">
                         </div>
 
-                        <!-- ĐIỂM THI (60%) -->
+                     
                         <div class="mb-3">
                             <label class="form-label">Điểm Thi (60%):</label>
                             <input type="number" step="0.1" min="0" max="10" class="form-control" id="diemThi" name="diemThi" value="${dk.diemThi}">
                         </div>
 
-                        <!-- ĐIỂM TỔNG KẾT (Tự động tính và chỉ đọc) -->
+          
                         <div class="mb-3">
                             <label class="form-label fw-bold text-primary">Điểm Tổng Kết (Tự động):</label>
                             <input type="number" step="0.01" class="form-control fw-bold text-primary bg-light" id="diemTK" name="diemTK" value="${dk.diemTK}" readonly>

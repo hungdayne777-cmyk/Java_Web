@@ -20,7 +20,7 @@
         <main class="p-4 flex-grow-1">
             <div class="container" style="max-width: 800px;">
 
-                <!-- Hiển thị thông báo thành công / lỗi -->
+               
                 <c:if test="${param.success == 'changed'}">
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         <i class="fa-solid fa-check-circle me-2"></i> Đổi mật khẩu thành công!
@@ -41,7 +41,7 @@
                 </c:if>
 
                 <div class="row g-4">
-                    <!-- Cột trái: Thông tin cơ bản -->
+                 
                     <div class="col-md-4">
                         <div class="card shadow-sm border-0 text-center p-4">
                             <div class="bg-primary text-white rounded-circle d-flex align-items-center justify-content-center mx-auto mb-3 shadow" style="width: 80px; height: 80px; font-size: 2rem;">
@@ -65,7 +65,7 @@
                         </div>
                     </div>
 
-                    <!-- Cột phải: Form đổi mật khẩu -->
+            
                     <div class="col-md-8">
                         <div class="card shadow-sm border-0 p-4">
                             <h5 class="fw-bold text-dark mb-3 border-bottom pb-2">

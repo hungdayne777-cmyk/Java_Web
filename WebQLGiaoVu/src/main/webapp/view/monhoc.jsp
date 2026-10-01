@@ -83,7 +83,7 @@
                     <c:if test="${param.message == 'deleted'}">
                         <div class="alert alert-success">Xóa môn học thành công!</div>
                     </c:if>
-                    <!-- Thêm id="tableMonHoc" cho thẻ table để phục vụ tìm kiếm -->
+                 
                     <table class="table table-hover align-middle mb-0" id="tableMonHoc">
                         <thead>
                             <tr>

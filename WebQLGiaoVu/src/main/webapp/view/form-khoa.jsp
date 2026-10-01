@@ -43,7 +43,7 @@
                     </a>
 
                 </div>
-                <!-- Thông báo lỗi để trống -->
+          
                 <c:if test="${param.error == 'empty'}">
                     <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
@@ -52,7 +52,7 @@
                     </div>
                 </c:if>
 
-                <!-- Thông báo lỗi trùng mã khoa -->
+        
                 <c:if test="${param.error == 'duplicate'}">
                     <div class="alert alert-danger alert-dismissible fade show mb-3" role="alert">
                         <i class="fa-solid fa-triangle-exclamation me-2"></i>
