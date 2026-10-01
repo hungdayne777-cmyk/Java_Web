@@ -71,14 +71,14 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 request.setAttribute("totalPages", totalPages);
                 request.setAttribute("keyword", keyword);
 
-                request.getRequestDispatcher("/view/dangky.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/dangky.jsp").forward(request, response);
                 break;
             }
             case "add":
                 request.setAttribute("isEdit", false);
                 request.setAttribute("dsSinhVien", svDao.findAll());
                 request.setAttribute("dsMonHoc", mhDao.findAll());
-                request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/form-dangky.jsp").forward(request, response);
                 break;
             case "edit":
                 String maSVEdit = request.getParameter("maSV");
@@ -89,7 +89,7 @@ protected void doGet(HttpServletRequest request, HttpServletResponse response)
                 request.setAttribute("isEdit", true);
                 request.setAttribute("dsSinhVien", svDao.findAll());
                 request.setAttribute("dsMonHoc", mhDao.findAll());
-                request.getRequestDispatcher("/view/form-dangky.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/form-dangky.jsp").forward(request, response);
                 break;
             case "delete":
                 String maSVDel = request.getParameter("maSV");

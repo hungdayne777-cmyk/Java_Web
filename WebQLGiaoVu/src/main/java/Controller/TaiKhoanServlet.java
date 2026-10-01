@@ -39,12 +39,12 @@ public class TaiKhoanServlet extends HttpServlet {
                 
                 List<TaiKhoan> list = dao.getAllAccounts();
                 request.setAttribute("listTK", list);
-                request.getRequestDispatcher("view/taikhoan.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/taikhoan.jsp").forward(request, response);
                 break;
                 
             case "add":
            
-                request.getRequestDispatcher("view/form-taikhoan.jsp").forward(request, response);
+                request.getRequestDispatcher("/WEB-INF/view/form-taikhoan.jsp").forward(request, response);
                 break;
                 
             case "insert":

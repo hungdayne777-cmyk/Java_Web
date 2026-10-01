@@ -80,13 +80,7 @@
                         </c:if>
 
                      
-                        <c:if test="${param.message == 'deleted'}">
-                            <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-                                <i class="fa-solid fa-circle-check me-2"></i>
-                                Xóa sinh viên thành công!
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        </c:if>
+                       
                         <c:if test="${param.message == 'added'}">
                             <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
                                 <i class="fa-solid fa-circle-check me-2"></i> Thêm mới sinh viên thành công!
@@ -101,12 +95,7 @@
                             </div>
                         </c:if>
 
-                        <c:if test="${param.message == 'deleted'}">
-                            <div class="alert alert-success alert-dismissible fade show mb-3" role="alert">
-                                <i class="fa-solid fa-circle-check me-2"></i> Xóa sinh viên thành công!
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                            </div>
-                        </c:if>
+                      
                         <table class="table table-hover align-middle mb-0" id="tableSinhVien">
                             <thead>
                                 <tr>

@@ -17,6 +17,9 @@ public class MonHocSerlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+        
+        
+        
         try {
             String action = "list";
             if (request.getParameter("action") != null) {
@@ -30,7 +33,7 @@ public class MonHocSerlet extends HttpServlet {
                     System.out.println("Số lượng môn học tìm thấy: " + (listMH != null ? listMH.size() : "null"));
 
                     request.setAttribute("listMH", listMH);
-                    request.getRequestDispatcher("/view/monhoc.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/monhoc.jsp").forward(request, response);
                     break;
                 case "search":
                     System.out.println("=== Đang gọi action SEARCH ===");
@@ -45,11 +48,11 @@ public class MonHocSerlet extends HttpServlet {
                     request.setAttribute("listMH", searchResult);
                     request.setAttribute("keyword", keyword);
 
-                    request.getRequestDispatcher("/view/monhoc.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/monhoc.jsp").forward(request, response);
                     break;
                 case "add":
                     System.out.println("add");
-                    request.getRequestDispatcher("/view/form-monhoc.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/form-monhoc.jsp").forward(request, response);
                     break;
 
                 case "edit":
@@ -58,7 +61,7 @@ public class MonHocSerlet extends HttpServlet {
                     var mh = mhDAO.findById(mamh);
                     request.setAttribute("mh", mh);
 
-                    request.getRequestDispatcher("/view/form-monhoc.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/form-monhoc.jsp").forward(request, response);
                     break;
 
                 case "delete":

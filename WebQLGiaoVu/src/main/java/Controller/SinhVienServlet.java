@@ -66,7 +66,7 @@ public class SinhVienServlet extends HttpServlet {
                     request.setAttribute("totalPages", totalPages);
                     request.setAttribute("keyword", keyword);
 
-                    request.getRequestDispatcher("/view/sinhvien.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/sinhvien.jsp").forward(request, response);
                     break;
                 }
                 case "add": {
@@ -76,7 +76,7 @@ public class SinhVienServlet extends HttpServlet {
                     request.setAttribute("dsKhoa", dsKhoa);
 
                     request.setAttribute("isEdit", false);
-                    request.getRequestDispatcher("/view/form-sinhvien.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/form-sinhvien.jsp").forward(request, response);
                     break;
                 }
                 case "edit": {
@@ -90,7 +90,7 @@ public class SinhVienServlet extends HttpServlet {
                     request.setAttribute("dsKhoa", dsKhoa);
 
                     request.setAttribute("isEdit", true);
-                    request.getRequestDispatcher("/view/form-sinhvien.jsp").forward(request, response);
+                    request.getRequestDispatcher("/WEB-INF/view/form-sinhvien.jsp").forward(request, response);
                     break;
                 }
                 case "delete": {

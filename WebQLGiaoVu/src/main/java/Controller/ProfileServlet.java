@@ -24,7 +24,7 @@ public class ProfileServlet extends HttpServlet {
             return;
         }
         
-        request.getRequestDispatcher("/view/profile.jsp").forward(request, response);
+        request.getRequestDispatcher("/WEB-INF/view/profile.jsp").forward(request, response);
     }
 
     @Override

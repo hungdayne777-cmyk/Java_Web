@@ -25,7 +25,7 @@
         <!-- DASHBOARD -->
         <div class="main-body container-fluid p-4">
 
-            <jsp:include page="/view/dashboard.jsp" />
+            <jsp:include page="/WEB-INF/view/dashboard.jsp" />
 
         </div>
 

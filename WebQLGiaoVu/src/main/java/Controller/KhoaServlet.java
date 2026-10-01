@@ -36,7 +36,7 @@ public class KhoaServlet extends HttpServlet {
 
                     request.setAttribute("listKH", listKH);
 
-                    request.getRequestDispatcher("/view/khoa.jsp")
+                    request.getRequestDispatcher("WEB-INF/view/khoa.jsp")
                             .forward(request, response);
 
                     break;
@@ -56,7 +56,7 @@ public class KhoaServlet extends HttpServlet {
                     request.setAttribute("listKH", searchResult);
                     request.setAttribute("keyword", keyword);
 
-                    request.getRequestDispatcher("/view/khoa.jsp")
+                    request.getRequestDispatcher("/WEB-INF/view/khoa.jsp")
                             .forward(request, response);
 
                     break;
@@ -65,7 +65,7 @@ public class KhoaServlet extends HttpServlet {
 
                     System.out.println("add khoa");
 
-                    request.getRequestDispatcher("/view/form-khoa.jsp")
+                    request.getRequestDispatcher("/WEB-INF/view/form-khoa.jsp")
                             .forward(request, response);
 
                     break;
@@ -80,7 +80,7 @@ public class KhoaServlet extends HttpServlet {
 
                     request.setAttribute("kh", kh);
 
-                    request.getRequestDispatcher("/view/form-khoa.jsp")
+                    request.getRequestDispatcher("/WEB-INF/view/form-khoa.jsp")
                             .forward(request, response);
 
                     break;
